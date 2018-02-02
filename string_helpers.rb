@@ -19,10 +19,10 @@ end
 
 def new_function_text(line, matchdata, randomized_name)
   "#{line}
-    args  = method(__method__).parameters.map{|arg| arg[1].to_s}
-    vals = args.map{|arg| eval arg}
-    RECORDER.push([\"#{matchdata[2]}\", args, vals])
-    x = #{randomized_name}(*vals)
+    record = {}
+    method(__method__).parameters.each{|arg| record[arg[1].to_s] = (eval arg[1].to_s)}
+    RECORDER.push([\"#{matchdata[2]}\", record])
+    x = #{randomized_name}(*(record.values))
     RECORDER.push(x)
     return x
 end
