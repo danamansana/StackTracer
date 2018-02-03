@@ -67,4 +67,9 @@
 
 .hide {
   width: fit-content;
+  display: none;
+}
+
+.display{
+  width: fit-content;
 }

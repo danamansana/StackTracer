@@ -11,8 +11,8 @@ def opener(record_entry, num)
       #{record_entry[0]} called with #{parse_hash(record_entry[1])}
     </div>
     <div class=\"button-holder\">
-    <div class=\"first-button\" onclick=\"toggleChildren(#{num})\">Display Details</div>
-    <div class=\"second-button\" onclick=\"toggleDescendents(#{num})\">Display All Details</div>
+    <div class=\"first-button #{num}\">Display Details</div>
+    <div class=\"second-button #{num}\">Display All Details</div>
     </div>
     <div class=\"hide\" id=\"#{num}\">
     "
