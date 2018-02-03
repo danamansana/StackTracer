@@ -24,8 +24,12 @@ def html_creator(text)
 end
 
 
-# def file_creator(filename)
-#   file = File.new("out", "w+")
-#   file.write("testing...")
-#   file.close
-# end
+# TODOs:
+# 1) handle variable assignment
+# 2) shell script, including directory structure
+# 3) error handling
+# 4) display of complex objects
+# 5) javascript
+# 6) asynchronous methods in javascript
+# 7) interact with react
+# 8) interact with rails
