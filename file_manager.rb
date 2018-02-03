@@ -1,4 +1,5 @@
 require "./string_helpers.rb"
+require "./html_helpers.rb"
 
 def file_creator(filename)
   lines = IO.readlines(filename)
@@ -13,6 +14,12 @@ def file_creator(filename)
 
 ")
   lines.each {|line| file.write(line)}
+  file.close
+end
+
+def html_creator(text)
+  file = File.new("index.html", "w+")
+  file.write(text)
   file.close
 end
 

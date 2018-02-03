@@ -4,13 +4,13 @@ def fibonacci(n)
 
     record = {}
     method(__method__).parameters.each{|arg| record[arg[1].to_s] = (eval arg[1].to_s)}
-    RECORDER.push(["fibonacci", record])
-    x = WHQDOUYKfibonacci(*(record.values))
-    RECORDER.push(x)
+    RECORDER.push(["fibonacci", record, "called"])
+    x = OWLJPRQHfibonacci(*(record.values))
+    RECORDER.push(["fibonacci", x, "returned"])
     return x
 end
 
-def WHQDOUYKfibonacci(n)
+def OWLJPRQHfibonacci(n)
     f0 = 0
   f1 = 1
   i = 0
@@ -27,13 +27,13 @@ def palindrome?(string)
 
     record = {}
     method(__method__).parameters.each{|arg| record[arg[1].to_s] = (eval arg[1].to_s)}
-    RECORDER.push(["palindrome?", record])
-    x = CMWFSPDVpalindrome?(*(record.values))
-    RECORDER.push(x)
+    RECORDER.push(["palindrome?", record, "called"])
+    x = BAYSXNWDpalindrome?(*(record.values))
+    RECORDER.push(["palindrome?", x, "returned"])
     return x
 end
 
-def CMWFSPDVpalindrome?(string)
+def BAYSXNWDpalindrome?(string)
     string == string.reverse
 end
 
@@ -41,13 +41,13 @@ def quicksort(arr)
 
     record = {}
     method(__method__).parameters.each{|arg| record[arg[1].to_s] = (eval arg[1].to_s)}
-    RECORDER.push(["quicksort", record])
-    x = ISAPTMXEquicksort(*(record.values))
-    RECORDER.push(x)
+    RECORDER.push(["quicksort", record, "called"])
+    x = HUWLFAMVquicksort(*(record.values))
+    RECORDER.push(["quicksort", x, "returned"])
     return x
 end
 
-def ISAPTMXEquicksort(arr)
+def HUWLFAMVquicksort(arr)
     return arr if arr.length == 0
   left  = arr.select{|num| num < arr[0]}
   mid = arr.select{|num| num == arr[0]}

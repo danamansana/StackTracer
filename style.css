@@ -1,0 +1,70 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid black;
+  margin-bottom: 15px;
+}
+
+.flag{
+  margin-top: 15px;
+  display: flex;
+}
+.flag-side{
+  padding: 25px;
+  border-top: 2px solid black;
+}
+.first-button {
+  background-color: yellow;
+  border-radius: 5px;
+  padding: 5px;
+  width: fit-content;
+}
+.second-button{
+  margin-left: 5px;
+  background-color: yellow;
+  border-radius: 5px;
+  padding: 5px;
+  width: fit-content;
+}
+
+.first-button:hover{
+  color: blue;
+}
+
+.second-button:hover{
+  color: blue;
+}
+.opener {
+  border-top: 2px solid black;
+  background-color: green;
+  color: white;
+  font-size: 15px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 5px;
+  margin: 0px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.closer {
+  background-color: red;
+  color: white;
+  font-size: 15px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.button-holder {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.hide {
+  width: fit-content;
+}
