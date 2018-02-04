@@ -21,12 +21,13 @@ class AssignmentParser
     @scope_count = 0
     @control_stack  = []
     @scopenings = []
+    @scope_stack = []
     #parse
     #variables
     #modify_words
   end
 
-  attr_reader :text, :variables, :parsed, :potential_assignments, :words, :delimiter_stack, :ignore_words, :control_stack, :scopenings
+  attr_reader :text, :variables, :parsed, :potential_assignments, :words, :delimiter_stack, :ignore_words, :control_stack, :scope_stack, :scopenings
   attr_accessor :currently_on_word, :scope_count
 
   def parse
@@ -77,7 +78,7 @@ class AssignmentParser
         delimiter_stack.push(delimiter) unless delimiter == "\{"
         delimiter_stack.push(delimiter) if delimiter == "\{" && parsed.last == "#"
       end
-      words.push(parsed.length-1) if delimeter == "\{" || delimiter == "\}"
+      words.push(parsed.length-1) if delimiter == "\{" || delimiter == "\}"
     end
   end
 
@@ -121,10 +122,12 @@ class AssignmentParser
   def modify_scope(word, idx)
     if SCOPENERS.include?(word)
       self.scope_count +=1
-      control_stack.push(scope_count)
+      control_stack.push(word)
+      self.scope_stack.push(scope_count)
       scopenings.push(idx) if word == "def" || word == "do"
     else
-      control_stack.pop
+      popped = control_stack.pop
+      self.scope_stack.pop if SCOPENERS.include?(popped)
     end
   end
 
@@ -137,7 +140,11 @@ class AssignmentParser
   end
 
   def append(frag)
-    "proxy(#{control_stack.last}).#{frag}" if variables.include?(frag)
+    if variables.include?(frag)
+      return "proxy(#{self.scope_stack.last}).#{frag}"
+    else
+      return frag
+    end
   end
 
   def modified_text
