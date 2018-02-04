@@ -20,7 +20,7 @@ end
 def new_function_text(line, matchdata, randomized_name)
   "#{line}
     record = {}
-    method(__method__).parameters.each{|arg| record[arg[1].to_s] = (eval arg[1].to_s)}
+    method(__method__).parameters.each{|arg| record[arg.last.to_s] = (eval arg.last.to_s)}
     RECORDER.push([\"#{matchdata[2]}\", record, \"called\"])
     x = #{randomized_name}(*(record.values))
     RECORDER.push([\"#{matchdata[2]}\", x, \"returned\"])

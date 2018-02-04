@@ -22,15 +22,21 @@ class Proxy
 
   def sssss(value)
     @inner = value
-    RECORDER.push("#{@name} set to #{@inner}")
+    RECORDER.push(["#{@name} set to #{@inner}", nil, "set"])
     @inner.methods.each do |meth|
-      add_method(meth)
+      add_method(meth.last)
     end
   end
 
+
   def add_method(meth)
     define_method(meth) do |*args|
-      
+      record = {nil => @name}
+      @inner.method(meth).parameters.each_with_index {|parameter, idx| record[parameter] = args[idx] }
+      RECORDER.push([@name, record, "method_called"])
+      x = @inner.send(meth, *args)
+      RECORDER.push([@name, x, "returned"])
+      return
     end
   end
 
