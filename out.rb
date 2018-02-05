@@ -1,56 +1,60 @@
-RECORDER = []
+require_relative "./proxy_holder.rb"
+    RECORDER = []
 
 def fibonacci(n)
-
     record = {}
-    method(__method__).parameters.each{|arg| record[arg[1].to_s] = (eval arg[1].to_s)}
+    method(__method__).parameters.each{|arg| record[arg.last.to_s] = (eval arg.last.to_s)}
     RECORDER.push(["fibonacci", record, "called"])
-    x = OWLJPRQHfibonacci(*(record.values))
+    x = MVWODJIXfibonacci(*(record.values))
     RECORDER.push(["fibonacci", x, "returned"])
     return x
 end
 
-def OWLJPRQHfibonacci(n)
-    f0 = 0
-  f1 = 1
-  i = 0
-  while i < n
-    f2 = f0 + f1
-    f0 = f1
-    f1 = f2
-    i += 1
+def MVWODJIXfibonacci(n)
+  proxies = Hash.new { |h,k| h[k] = ProxyHolder.new(["f0", "f1", "i", "f2", "left", "mid", "right"])}
+  
+  proxies[1].f0 = 0
+  proxies[1].f1 = 1
+  proxies[1].i = 0
+  while proxies[1].i < n
+    proxies[1].f2 = proxies[1].f0 + proxies[1].f1
+    proxies[1].f0 = proxies[1].f1
+    proxies[1].f1 = proxies[1].f2
+    proxies[1].i += 1
   end
-  return f0
+  return proxies[1].f0
 end
 
 def palindrome?(string)
-
     record = {}
-    method(__method__).parameters.each{|arg| record[arg[1].to_s] = (eval arg[1].to_s)}
+    method(__method__).parameters.each{|arg| record[arg.last.to_s] = (eval arg.last.to_s)}
     RECORDER.push(["palindrome?", record, "called"])
-    x = BAYSXNWDpalindrome?(*(record.values))
+    x = WGAHOXVCpalindrome?(*(record.values))
     RECORDER.push(["palindrome?", x, "returned"])
     return x
 end
 
-def BAYSXNWDpalindrome?(string)
-    string == string.reverse
+def WGAHOXVCpalindrome?(string)
+  proxies = Hash.new { |h,k| h[k] = ProxyHolder.new(["f0", "f1", "i", "f2", "left", "mid", "right"])}
+  
+  string == string.reverse
 end
 
 def quicksort(arr)
-
     record = {}
-    method(__method__).parameters.each{|arg| record[arg[1].to_s] = (eval arg[1].to_s)}
+    method(__method__).parameters.each{|arg| record[arg.last.to_s] = (eval arg.last.to_s)}
     RECORDER.push(["quicksort", record, "called"])
-    x = HUWLFAMVquicksort(*(record.values))
+    x = TZNCBSPRquicksort(*(record.values))
     RECORDER.push(["quicksort", x, "returned"])
     return x
 end
 
-def HUWLFAMVquicksort(arr)
-    return arr if arr.length == 0
-  left  = arr.select{|num| num < arr[0]}
-  mid = arr.select{|num| num == arr[0]}
-  right = arr.select{|num| num > arr[0]}
-  return quicksort(left)+mid+quicksort(right)
+def TZNCBSPRquicksort(arr)
+  proxies = Hash.new { |h,k| h[k] = ProxyHolder.new(["f0", "f1", "i", "f2", "left", "mid", "right"])}
+  
+  return arr if arr.length == 0
+  proxies[3].left  = arr.select{|num| num < arr[0]}
+  proxies[3].mid = arr.select{|num| num == arr[0]}
+  proxies[3].right = arr.select{|num| num > arr[0]}
+  return quicksort(proxies[3].left)+proxies[3].mid+quicksort(proxies[3].right)
 end

@@ -59,6 +59,18 @@
   box-sizing: border-box;
 }
 
+.setter {
+  background-color: blue;
+  color: white;
+  font-size: 15px;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
 .button-holder {
   display: flex;
   justify-content: space-between;

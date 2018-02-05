@@ -1,19 +1,24 @@
 require "./string_helpers.rb"
 require "./html_helpers.rb"
+require "./better_parser.rb"
 
 def file_creator(filename)
-  lines = IO.readlines(filename)
+  lines = IO.readlines(filename).join("")
+  parser = AssignmentParser.new(lines)
+  lines = parser.modified_text.split("\n")
+  variables = parser.variables
   lines.each_with_index do |line, idx|
     matchdata = split_function_name(line)
     if matchdata
-      lines[idx] = new_function_text(line, matchdata, randomize_function_name(matchdata))
+      lines[idx] = new_function_text(line, matchdata, randomize_function_name(matchdata), variables)
     end
   end
   file = File.new("out.rb", "w+")
-  file.write("RECORDER = []
+  file.write("require_relative \"./proxy_holder.rb\"
+    RECORDER = []
 
 ")
-  lines.each {|line| file.write(line)}
+  lines.each {|line| file.write(line + "\n")}
   file.close
 end
 

@@ -17,7 +17,7 @@ end
 
 #this function returns the text of the new function
 
-def new_function_text(line, matchdata, randomized_name)
+def new_function_text(line, matchdata, randomized_name, variables)
   "#{line}
     record = {}
     method(__method__).parameters.each{|arg| record[arg.last.to_s] = (eval arg.last.to_s)}
@@ -28,5 +28,6 @@ def new_function_text(line, matchdata, randomized_name)
 end
 
 #{matchdata[1]}#{randomized_name}#{matchdata[3]}
+  proxies = Hash.new { |h,k| h[k] = ProxyHolder.new(#{variables.to_a})}
   "
 end

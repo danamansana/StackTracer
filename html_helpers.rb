@@ -29,6 +29,12 @@ def closer(record_entry)
   "
 end
 
+#settr generates the HTML when a variable is set
+def setter(record_entry)
+  "<div class= \"setter\">
+    #{record_entry[0]} </div>
+  "
+end
 
 #main_text generates the variable part of the html from a record by iterating through entries and calling opener and closer
 def main_text(record)
@@ -36,6 +42,8 @@ def main_text(record)
   record.each_with_index do |record_entry, idx|
     if record_entry[2] == "called"
       text += opener(record_entry, idx)
+    elsif record_entry[2] == "set"
+      text += setter(record_entry)
     else
       text += closer(record_entry)
     end

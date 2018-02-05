@@ -22,9 +22,6 @@ class AssignmentParser
     @control_stack  = []
     @scopenings = []
     @scope_stack = []
-    #parse
-    #variables
-    #modify_words
   end
 
   attr_reader :text, :variables, :parsed, :potential_assignments, :words, :delimiter_stack, :ignore_words, :control_stack, :scope_stack, :scopenings
@@ -34,7 +31,7 @@ class AssignmentParser
     i = 0
     while i < text.length
       current = text[i]
-      if current == "="
+      if current == "=" && text[i+1] != "=" && !["="].include?(text[i-1])
         handle_equals
       elsif DELIMITERS.include?(current)
         handle_delimiter(current)
@@ -106,6 +103,8 @@ class AssignmentParser
     variables.add(potential_variable) unless potential_variable.include?(".")
   end
 
+  #need to change this to ignore variables that occur in argument lists of methods or blocks
+
   def modify_words
     words.each do |word_idx|
       word  = parsed[word_idx]
@@ -141,14 +140,17 @@ class AssignmentParser
 
   def append(frag)
     if variables.include?(frag)
-      return "proxy(#{self.scope_stack.last}).#{frag}"
+      return "proxies[#{self.scope_stack.last}].#{frag}"
     else
       return frag
     end
   end
 
   def modified_text
-    parsed.join("")
+    self.parse
+    self.populate_variables
+    self.modify_words
+    self.parsed.join("")
   end
 
 end
