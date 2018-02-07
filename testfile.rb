@@ -22,3 +22,11 @@ def quicksort(arr)
   right = arr.select{|num| num > arr[0]}
   return quicksort(left)+mid+quicksort(right)
 end
+
+def math_eval(string)
+  return string.to_i if string.length == 1
+  head = string[0..-3]
+  mid = string[-2].to_sym
+  tail = string[-1].to_i
+  return math_eval(head).send(mid, tail)
+end

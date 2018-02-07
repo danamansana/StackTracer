@@ -5,14 +5,14 @@ def fibonacci(n)
     record = {}
     method(__method__).parameters.each{|arg| record[arg.last.to_s] = (eval arg.last.to_s)}
     RECORDER.push(["fibonacci", record, "called"])
-    x = MVWODJIXfibonacci(*(record.values))
+    x = YXBHMUGLfibonacci(*(record.values))
     RECORDER.push(["fibonacci", x, "returned"])
     return x
 end
 
-def MVWODJIXfibonacci(n)
-  proxies = Hash.new { |h,k| h[k] = ProxyHolder.new(["f0", "f1", "i", "f2", "left", "mid", "right"])}
-  
+def YXBHMUGLfibonacci(n)
+  proxies = Hash.new { |h,k| h[k] = ProxyHolder.new(["f0", "f1", "i", "f2", "left", "mid", "right", "head", "tail"])}
+
   proxies[1].f0 = 0
   proxies[1].f1 = 1
   proxies[1].i = 0
@@ -29,14 +29,14 @@ def palindrome?(string)
     record = {}
     method(__method__).parameters.each{|arg| record[arg.last.to_s] = (eval arg.last.to_s)}
     RECORDER.push(["palindrome?", record, "called"])
-    x = WGAHOXVCpalindrome?(*(record.values))
+    x = NLAUTCOYpalindrome?(*(record.values))
     RECORDER.push(["palindrome?", x, "returned"])
     return x
 end
 
-def WGAHOXVCpalindrome?(string)
-  proxies = Hash.new { |h,k| h[k] = ProxyHolder.new(["f0", "f1", "i", "f2", "left", "mid", "right"])}
-  
+def NLAUTCOYpalindrome?(string)
+  proxies = Hash.new { |h,k| h[k] = ProxyHolder.new(["f0", "f1", "i", "f2", "left", "mid", "right", "head", "tail"])}
+
   string == string.reverse
 end
 
@@ -44,17 +44,36 @@ def quicksort(arr)
     record = {}
     method(__method__).parameters.each{|arg| record[arg.last.to_s] = (eval arg.last.to_s)}
     RECORDER.push(["quicksort", record, "called"])
-    x = TZNCBSPRquicksort(*(record.values))
+    x = RWVTUZMSquicksort(*(record.values))
     RECORDER.push(["quicksort", x, "returned"])
     return x
 end
 
-def TZNCBSPRquicksort(arr)
-  proxies = Hash.new { |h,k| h[k] = ProxyHolder.new(["f0", "f1", "i", "f2", "left", "mid", "right"])}
-  
+def RWVTUZMSquicksort(arr)
+  proxies = Hash.new { |h,k| h[k] = ProxyHolder.new(["f0", "f1", "i", "f2", "left", "mid", "right", "head", "tail"])}
+
   return arr if arr.length == 0
   proxies[3].left  = arr.select{|num| num < arr[0]}
   proxies[3].mid = arr.select{|num| num == arr[0]}
   proxies[3].right = arr.select{|num| num > arr[0]}
   return quicksort(proxies[3].left)+proxies[3].mid+quicksort(proxies[3].right)
+end
+
+def math_eval(string)
+    record = {}
+    method(__method__).parameters.each{|arg| record[arg.last.to_s] = (eval arg.last.to_s)}
+    RECORDER.push(["math_eval", record, "called"])
+    x = TVWHZDIAmath_eval(*(record.values))
+    RECORDER.push(["math_eval", x, "returned"])
+    return x
+end
+
+def TVWHZDIAmath_eval(string)
+  proxies = Hash.new { |h,k| h[k] = ProxyHolder.new(["f0", "f1", "i", "f2", "left", "mid", "right", "head", "tail"])}
+
+  return string.to_i if string.length == 1
+  proxies[7].head = string[0..-3]
+  proxies[7].mid = string[-2].to_sym
+  proxies[7].tail = string[-1].to_i
+  return math_eval(proxies[7].head).send(proxies[7].mid, proxies[7].tail)
 end
