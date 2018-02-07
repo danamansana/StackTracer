@@ -1,7 +1,7 @@
 require 'set'
 
 class AssignmentParser
-  CHARACTERS = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a + ["_", "."]
+  CHARACTERS = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a + ["_"]
   DELIMITERS = ["\"", "\'", "\{", "\}"]
   OPENERS = ["\'", "\"", "\{"]
   CLOSERS = {"\'" => "\'", "\"" => "\"", "\}" => "\{"}
@@ -97,6 +97,7 @@ class AssignmentParser
   def add_variable(i)
     current = i-1
     until CHARACTERS.include?(parsed[current][0])
+      return nil if current == "."
       current = current-1
     end
     potential_variable = parsed[current]

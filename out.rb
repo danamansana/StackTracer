@@ -5,14 +5,14 @@ def fibonacci(n)
     record = {}
     method(__method__).parameters.each{|arg| record[arg.last.to_s] = (eval arg.last.to_s)}
     RECORDER.push(["fibonacci", record, "called"])
-    x = YXBHMUGLfibonacci(*(record.values))
+    x = XTNZYWBKfibonacci(*(record.values))
     RECORDER.push(["fibonacci", x, "returned"])
     return x
 end
 
-def YXBHMUGLfibonacci(n)
+def XTNZYWBKfibonacci(n)
   proxies = Hash.new { |h,k| h[k] = ProxyHolder.new(["f0", "f1", "i", "f2", "left", "mid", "right", "head", "tail"])}
-
+  
   proxies[1].f0 = 0
   proxies[1].f1 = 1
   proxies[1].i = 0
@@ -29,14 +29,14 @@ def palindrome?(string)
     record = {}
     method(__method__).parameters.each{|arg| record[arg.last.to_s] = (eval arg.last.to_s)}
     RECORDER.push(["palindrome?", record, "called"])
-    x = NLAUTCOYpalindrome?(*(record.values))
+    x = DELKSTRCpalindrome?(*(record.values))
     RECORDER.push(["palindrome?", x, "returned"])
     return x
 end
 
-def NLAUTCOYpalindrome?(string)
+def DELKSTRCpalindrome?(string)
   proxies = Hash.new { |h,k| h[k] = ProxyHolder.new(["f0", "f1", "i", "f2", "left", "mid", "right", "head", "tail"])}
-
+  
   string == string.reverse
 end
 
@@ -44,14 +44,14 @@ def quicksort(arr)
     record = {}
     method(__method__).parameters.each{|arg| record[arg.last.to_s] = (eval arg.last.to_s)}
     RECORDER.push(["quicksort", record, "called"])
-    x = RWVTUZMSquicksort(*(record.values))
+    x = GYISEJAQquicksort(*(record.values))
     RECORDER.push(["quicksort", x, "returned"])
     return x
 end
 
-def RWVTUZMSquicksort(arr)
+def GYISEJAQquicksort(arr)
   proxies = Hash.new { |h,k| h[k] = ProxyHolder.new(["f0", "f1", "i", "f2", "left", "mid", "right", "head", "tail"])}
-
+  
   return arr if arr.length == 0
   proxies[3].left  = arr.select{|num| num < arr[0]}
   proxies[3].mid = arr.select{|num| num == arr[0]}
@@ -63,14 +63,14 @@ def math_eval(string)
     record = {}
     method(__method__).parameters.each{|arg| record[arg.last.to_s] = (eval arg.last.to_s)}
     RECORDER.push(["math_eval", record, "called"])
-    x = TVWHZDIAmath_eval(*(record.values))
+    x = QDAGEZYOmath_eval(*(record.values))
     RECORDER.push(["math_eval", x, "returned"])
     return x
 end
 
-def TVWHZDIAmath_eval(string)
+def QDAGEZYOmath_eval(string)
   proxies = Hash.new { |h,k| h[k] = ProxyHolder.new(["f0", "f1", "i", "f2", "left", "mid", "right", "head", "tail"])}
-
+  
   return string.to_i if string.length == 1
   proxies[7].head = string[0..-3]
   proxies[7].mid = string[-2].to_sym
