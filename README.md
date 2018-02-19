@@ -16,7 +16,7 @@ that is causing a problem. Furthermore they have to be re-run if the programmer 
 of the program run, and lastly they do not generate a visual record of program calls.
 
 ## Demo
-To see examples of the kinds of files StackTrace generates, open up the index.html file
+To see examples of the kinds of files StackTrace generates, navigate to http://danielappel.io/StackTracer/ and click on Display Details or Display all Details
 To demo StackTracer for yourself, go through the following steps:
 * Clone the StackTracer repository
 * Navigate to StackTracer in your terminal
