@@ -21,7 +21,7 @@ To demo StackTracer for yourself, go through the following steps:
 * Clone the StackTracer repository
 * Navigate to StackTracer in your terminal
 * Enter pry and load 'file_manager.rb'
-* enter "filecreator('testfile.rb')" (you can replace testfile with another file if you wish, as long as it's a Ruby File)
+* enter "file_creator('testfile.rb')" (you can replace testfile with another file if you wish, as long as it's a Ruby File)
 * load "out.rb"
 * Try calling some of the methods in the testfile. Currently there are "math_eval", "quicksort", "fibonacci", and "palindrome?"
 * enter html_creator(generate_html(RECORDER)) into pry
