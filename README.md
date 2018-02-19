@@ -37,6 +37,6 @@ These are some of the features currently under development:
 * More support for visually displaying loops and enumerables, for example grouping all the method calls that occur in a while loop together
 
 ## Under the Hood
-StackTracer parses the input file and generates a new Ruby file programmatically. All function definitions are replaced by new function definitions that add steps for recording that a function was called, its name, and its arguments, as well as its return value, before being called. All variables are replaced by proxies that similarly record when they are being reassigned or when a method is being called. When a user calls a method the new program generates a record of all program activity. This record is then parsed and user to generate an html file that can be loaded in the browser.
+StackTracer parses the input file and generates a new Ruby file programmatically. All function definitions are replaced by new function definitions that add steps for recording that a function was called, its name, and its arguments, as well as its return value, before being called. All variables are replaced by proxies that similarly record when they are being reassigned or when a method is being called. When a user calls a method the new program generates a record of all program activity. This record is then parsed and used to generate an html file that can be loaded in the browser.
 
 
